@@ -69,4 +69,4 @@ Cargo.lock
 *.pdb
 
 # Custom
-!.vscode
+.direnv
