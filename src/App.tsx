@@ -92,6 +92,7 @@ function daySingle(
   const [end, setEnd] = createSignal({"date": "", "time": ""});
   const [content, setContent] = createSignal("");
   const [modal, setModalVisible] = createSignal(false);
+  const [color, setColor] = createSignal("c0ffee");
   return (
     <div
       style="width: calc(100vw / 7)"
@@ -143,12 +144,12 @@ function daySingle(
             "hour": e.getHours(),
             "minute": e.getMinutes()
           },
-          "color": "c0ffee"
+          "color": color()
         })
         setorge(tmp);
         console.log(orge());
       }}>
-        <Show when={modal()}>{CreateEventDialog(modal, setModalVisible, title, setTitle, start, setStart, end, setEnd, content, setContent)}</Show>
+        <Show when={modal()}>{CreateEventDialog(modal, setModalVisible, title, setTitle, start, setStart, end, setEnd, content, setContent, color, setColor)}</Show>
       </Transition>
     </div>
   );

@@ -16,7 +16,9 @@ function dialogContent(
   end: Accessor<tmpfordialog>,
   setEnd: Setter<tmpfordialog>,
   content: Accessor<string>,
-  setContent: Setter<string>
+  setContent: Setter<string>,
+  color: Accessor<string>,
+  setColor: Setter<string>
 ) {
   return (<TextField.Root>
     <div class="w-full h-full flex flex-col ml-1 mr-1 mb-1 mt-1">
@@ -71,6 +73,14 @@ function dialogContent(
           })}
         />
       </div>
+      <div class="flex flex-row">
+        <TextField.Label class="w-fit">색깔</TextField.Label>
+        <TextField.Input class="outline-none bg-transparent" type="color" value={"#" + color()} onchange={(e)=>{
+          let v = e.target.value;
+          if (v.startsWith("#")) {v = e.target.value.slice(1)}
+          setColor(v);
+        }}/>
+      </div>
       <TextField.Label class="w-fit">설명</TextField.Label>
       <TextField.TextArea
         class="bg-transparent outline-none resize-none max-h-24 dark:text-ctp-text scroll-smooth w-fit"
@@ -91,6 +101,7 @@ export function AlertDialogForEvent(item: SimpleEvent, comp: JSX.Element, events
   const [start, setStart] = createSignal({"date": o.start.date, "time": o.start.time});
   const [end, setEnd] = createSignal({"date": o.end.date, "time": o.end.time});
   const [content, setContent] = createSignal(item.content);
+  const [color, setColor] = createSignal(item.color);
   createEffect(() => {
     if (!open() && first) {
       const s = new Date(`${start()["date"]}T${start()["time"]}`);
@@ -118,7 +129,7 @@ export function AlertDialogForEvent(item: SimpleEvent, comp: JSX.Element, events
           "hour": e.getHours(),
           "minute": e.getMinutes()
         },
-        "color": "c0ffee"
+        "color": color()
       };
       setEvents(tmp);
     }
@@ -130,7 +141,7 @@ export function AlertDialogForEvent(item: SimpleEvent, comp: JSX.Element, events
         <AlertDialog.Overlay />
         <div class="flex fixed inset-0 z-50 items-center justify-center overlay w-full h-full bg-black bg-opacity-30">
           <AlertDialog.Content class="content glass bg-white dark:bg-ctp-overlay0">
-            {dialogContent(title, setTitle, start, setStart, end, setEnd, content, setContent)}
+            {dialogContent(title, setTitle, start, setStart, end, setEnd, content, setContent, color, setColor)}
           </AlertDialog.Content>
         </div>
       </AlertDialog.Portal>
@@ -148,7 +159,9 @@ export function CreateEventDialog(
   end: Accessor<tmpfordialog>,
   setEnd: Setter<tmpfordialog>,
   content: Accessor<string>,
-  setContent: Setter<string>
+  setContent: Setter<string>,
+  color: Accessor<string>,
+  setColor: Setter<string>
 ) {
   return (
     <div
@@ -165,7 +178,7 @@ export function CreateEventDialog(
           e.stopImmediatePropagation();
         }}
       >
-        {dialogContent(title, setTitle, start, setStart, end, setEnd, content, setContent)}
+        {dialogContent(title, setTitle, start, setStart, end, setEnd, content, setContent, color, setColor)}
       </div>
     </div>
   );
