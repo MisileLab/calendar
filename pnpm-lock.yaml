@@ -24,7 +24,7 @@ dependencies:
 devDependencies:
   '@catppuccin/tailwindcss':
     specifier: 0.1.6
-    version: 0.1.6(tailwindcss@3.4.0)
+    version: 0.1.6(tailwindcss@3.4.1)
   '@tauri-apps/cli':
     specifier: 1.5.9
     version: 1.5.9
@@ -35,8 +35,8 @@ devDependencies:
     specifier: 8.4.33
     version: 8.4.33
   tailwindcss:
-    specifier: 3.4.0
-    version: 3.4.0
+    specifier: 3.4.1
+    version: 3.4.1
   typescript:
     specifier: 5.3.3
     version: 5.3.3
@@ -389,12 +389,12 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@catppuccin/tailwindcss@0.1.6(tailwindcss@3.4.0):
+  /@catppuccin/tailwindcss@0.1.6(tailwindcss@3.4.1):
     resolution: {integrity: sha512-V+Y0AwZ5SSyvOVAcDl7Ng30xy+m82OKnEJ+9+kcZZ7lRyXuZrAb2GScdq9XR3v+ggt8qiZ/G4TvaC9cJ88AAXA==}
     peerDependencies:
       tailwindcss: '>=3.0.0'
     dependencies:
-      tailwindcss: 3.4.0
+      tailwindcss: 3.4.1
     dev: true
 
   /@esbuild/aix-ppc64@0.19.11:
@@ -2281,8 +2281,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /tailwindcss@3.4.0:
-    resolution: {integrity: sha512-VigzymniH77knD1dryXbyxR+ePHihHociZbXnLZHUyzf2MMs2ZVqlUrZ3FvpXP8pno9JzmILt1sZPD19M3IxtA==}
+  /tailwindcss@3.4.1:
+    resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
