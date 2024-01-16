@@ -5,8 +5,8 @@ import { SimpleEvent, Event } from "./interfaces";
 import { getColor, convertEventToHighlight, handlingButton, convertDateToString, shallowEqual } from "./utils";
 import { ContextMenu } from "@kobalte/core";
 import { AlertDialogForEvent, CreateEventDialog } from "./dialogs";
-import { BaseDirectory, createDir, exists, readTextFile, writeTextFile } from "@tauri-apps/api/fs";
-import { confirm } from "@tauri-apps/api/dialog";
+import { BaseDirectory, create, exists, readTextFile, writeTextFile } from "@tauri-apps/plugin-fs";
+import { confirm, message } from "@tauri-apps/plugin-dialog";
 import styles from "./app.module.css";
 
 function ContextMenuForEvent(item: SimpleEvent, comp: JSX.Element, events: Accessor<Event[]>, setEvents: Setter<Event[]>) {
@@ -87,9 +87,10 @@ function daySingle(
   events: Record<string, SimpleEvent[]>,
   index: string
 ) {
+  const td = new Date();
   const [title, setTitle] = createSignal("");
-  const [start, setStart] = createSignal({"date": "", "time": ""});
-  const [end, setEnd] = createSignal({"date": "", "time": ""});
+  const [start, setStart] = createSignal({"date": `${td.toISOString().substring(0, 10)}`, "time": `${td.toISOString().substring(11, 16)}`});
+  const [end, setEnd] = createSignal({"date": `${td.toISOString().substring(0, 10)}`, "time": `${td.toISOString().substring(11, 16)}`});
   const [content, setContent] = createSignal("");
   const [modal, setModalVisible] = createSignal(false);
   const [color, setColor] = createSignal("c0ffee");
@@ -122,11 +123,13 @@ function daySingle(
           return ContextMenuForEvent(item, a, orge, setorge);
         }}
       </For>
-      <Transition name="trans" onAfterExit={()=>{
+      <Transition name="trans" onAfterExit={async ()=>{
         if (title() === '') {return;}
         const s = new Date(`${start()["date"]}T${start()["time"]}`);
         const e = new Date(`${end()["date"]}T${end()["time"]}`);
+        if (s >= e) {await message("시작 날짜가 끝나는 날짜보다 늦습니다."); return;}
         const tmp = [...orge()];
+        console.log(start(), end());
         tmp.push({
           "start": {
             "year": s.getFullYear(),
@@ -218,18 +221,18 @@ function App() {
     setComp(<div class="h-full flex flex-col">{day(date()[0], events, setEvents)}</div>);
   })
   createEffect(async () => {
-    if (!await exists("", { dir: BaseDirectory.AppData })) { await createDir("", { dir: BaseDirectory.AppData }) }
-    if (await exists("data.json", { dir: BaseDirectory.AppData })) {
-      setEvents(JSON.parse(await readTextFile("data.json", { dir: BaseDirectory.AppData })));
+    if (await exists("data.json", { baseDir: BaseDirectory.AppData })) {
+      setEvents(JSON.parse(await readTextFile("data.json", { baseDir: BaseDirectory.AppData })));
     } else {
-      await writeTextFile("data.json", "[]", { dir: BaseDirectory.AppData });
+      await create("data.json", { baseDir: BaseDirectory.AppData })
+      await writeTextFile("data.json", "[]", { baseDir: BaseDirectory.AppData });
     }
     loaded = true;
   })
   createEffect(async (ev: any) => {
     if (shallowEqual(ev, events())) {return;}
     if (!loaded) {return;}
-    await writeTextFile("data.json", JSON.stringify(events()), { dir: BaseDirectory.AppData });
+    await writeTextFile("data.json", JSON.stringify(events()), { baseDir: BaseDirectory.AppData });
   })
 
   return (

@@ -2,6 +2,7 @@ import { Accessor, JSX, Setter, createEffect, createSignal } from "solid-js";
 import { SimpleEvent, Event } from "./interfaces";
 import { AlertDialog, TextField } from "@kobalte/core";
 import { convertDateToString } from "./utils";
+import { message } from "@tauri-apps/plugin-dialog";
 
 export interface tmpfordialog {
   date: string,
@@ -102,15 +103,15 @@ export function AlertDialogForEvent(item: SimpleEvent, comp: JSX.Element, events
   const [end, setEnd] = createSignal({"date": o.end.date, "time": o.end.time});
   const [content, setContent] = createSignal(item.content);
   const [color, setColor] = createSignal(item.color);
-  createEffect(() => {
+  createEffect(async () => {
     if (!open() && first) {
       const s = new Date(`${start()["date"]}T${start()["time"]}`);
       const e = new Date(`${end()["date"]}T${end()["time"]}`);
       const tmp = events().slice();
       const iorg = JSON.stringify(item.org);
       const a = tmp.findIndex((e) => JSON.stringify(e) === iorg);
-      console.log(item.org, tmp, a);
       if (a == -1) {return;}
+      if (s >= e) {await message("끝나는 날짜가 시작 날짜보다 늦어야 합니다."); return;}
       tmp.splice(a, 1);
       tmp[a] = {
         "start": {

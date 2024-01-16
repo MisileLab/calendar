@@ -10,23 +10,18 @@
     "productName": "calendar",
     "version": "0.1.0"
   },
-  "tauri": {
-    "allowlist": {
-      "fs": {
-        "readFile": true,
-        "writeFile": true,
-        "exists": true,
-        "removeFile": true,
-        "createDir": true,
-        "scope": ["$APPDATA", "$APPDATA/data.json"]
-      },
-      "path": {
-        "all": true
-      },
-      "dialog": {
-        "confirm": true
-      }
+  "plugins": {
+    "fs": {
+      "scope": [
+        "$APPDATA",
+        "$APPDATA/data.json"
+      ]
     },
+    "updater": {
+      "endpoints": []
+    }
+  },
+  "tauri": {
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
@@ -54,6 +49,9 @@
       "resources": [],
       "shortDescription": "",
       "targets": "all",
+      "updater": {
+        "active": false
+      },
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
@@ -63,17 +61,14 @@
     "security": {
       "csp": null
     },
-    "updater": {
-      "active": false
-    },
     "windows": [
       {
         "fullscreen": false,
         "height": 600,
         "resizable": true,
+        "theme": "Dark",
         "title": "Calendar",
-        "width": 800,
-        "theme": "Dark"
+        "width": 800
       }
     ]
   }
