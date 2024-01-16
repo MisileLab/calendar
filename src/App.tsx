@@ -177,7 +177,7 @@ function day(date: Date, events: Accessor<Event[]>, setEvents: Setter<Event[]>) 
     dateList[0].push(daySingle(events, setEvents, "", false, highlights(), ""));
   }
   for (let i = 0; i < _dateList.length; i++) {
-    let d = _dateList[i];
+    const d = _dateList[i];
     if (new Date(fy, fm - 1, d).getDay() == 0) {
       if (dateList[dateList.length - 1].length !== 0) {
         dateList.push([]);

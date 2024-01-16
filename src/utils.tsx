@@ -22,7 +22,7 @@ export function convertEventToHighlight(events: Event[]) {
         color: e.color,
         org: e
       });
-      let newDate = start.setDate(start.getDate() + 1);
+      const newDate = start.setDate(start.getDate() + 1);
       start = new Date(newDate);
     }
   });
@@ -80,7 +80,7 @@ export function shallowEqual(object1: any, object2: any) {
       return false;
     }
 
-    for (let key of keys1) {
+    for (const key of keys1) {
       // @ts-ignore
       if (JSON.stringify(object1[key]) !== JSON.stringify(object2[key])) {
         return false;
