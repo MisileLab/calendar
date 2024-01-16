@@ -1,4 +1,5 @@
-import { Event, EventDate, SimpleEvent } from './interfaces';
+import { Setter } from 'solid-js';
+import { DateTimeData, Event, EventDate, SimpleEvent } from './interfaces';
 
 export function convertEventToHighlight(events: Event[]) {
   const highlights: Record<string, SimpleEvent[]> = {};
@@ -29,7 +30,7 @@ export function convertEventToHighlight(events: Event[]) {
   return highlights;
 }
 
-export function handlingButton(d: Date, setDateState: Function, amount: number) {
+export function handlingButton(d: Date, setDateState: Setter<Date[]>, amount: number) {
   const _d = d;
   _d.setMonth(d.getMonth() + amount);
   setDateState([_d]);
@@ -70,8 +71,7 @@ export function convertDateToString(ios: EventDate, ioe: EventDate) {
   };
 }
 
-export function shallowEqual(object1: any, object2: any) {
-  console.log(object1, object2);
+export function shallowEqual<K extends string | number | symbol, T>(object1: Record<K, T>, object2: Record<K, T>) {
   if (typeof object1 === object1 && typeof object2 === object2) {
     const keys1 = Object.keys(object1);
     const keys2 = Object.keys(object2);
@@ -81,8 +81,7 @@ export function shallowEqual(object1: any, object2: any) {
     }
 
     for (const key of keys1) {
-      // @ts-ignore
-      if (JSON.stringify(object1[key]) !== JSON.stringify(object2[key])) {
+      if (JSON.stringify(object1[key as K]) !== JSON.stringify(object2[key as K])) {
         return false;
       }
     }
@@ -90,4 +89,29 @@ export function shallowEqual(object1: any, object2: any) {
   } else {
     return JSON.stringify(object1) === JSON.stringify(object2);
   }
+}
+
+export function makeEffectToObject(start: DateTimeData, end: DateTimeData, title: string, content: string, color: string): Event | false {
+  const s = new Date(`${start["date"]}T${start["time"]}`);
+  const e = new Date(`${end["date"]}T${end["time"]}`);
+  if (s >= e) {return false;}
+  return {
+    "start": {
+      "year": s.getFullYear(),
+      "month": s.getMonth()+1,
+      "day": s.getDate(),
+      "hour": s.getHours(),
+      "minute": s.getMinutes()
+    },
+    "title": title,
+    "content": content,
+    "end": {
+      "year": e.getFullYear(),
+      "month": e.getMonth()+1,
+      "day": e.getDate(),
+      "hour": e.getHours(),
+      "minute": e.getMinutes()
+    },
+    "color": color
+  };
 }

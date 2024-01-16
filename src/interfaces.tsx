@@ -1,3 +1,5 @@
+import { Accessor, Setter } from "solid-js";
+
 export interface EventDate {
   year: number;
   month: number;
@@ -22,4 +24,22 @@ export interface SimpleEvent {
   content: string;
   color: string;
   org: Event;
+}
+
+export interface DateTimeData {
+  date: string,
+  time: string
+}
+
+export interface DialogSignals {
+  title: Accessor<string>,
+  setTitle: Setter<string>,
+  start: Accessor<DateTimeData>,
+  setStart: Setter<DateTimeData>,
+  end: Accessor<DateTimeData>,
+  setEnd: Setter<DateTimeData>,
+  content: Accessor<string>,
+  setContent: Setter<string>,
+  color: Accessor<string>,
+  setColor: Setter<string>
 }

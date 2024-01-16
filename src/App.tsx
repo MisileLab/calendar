@@ -2,7 +2,7 @@ import { Accessor, For, JSX, Setter, Show, createEffect, createMemo, createSigna
 import { VsArrowLeft, VsArrowRight, VsEdit, VsTrash } from "solid-icons/vs";
 import { Transition } from "solid-transition-group";
 import { SimpleEvent, Event } from "./interfaces";
-import { getColor, convertEventToHighlight, handlingButton, convertDateToString, shallowEqual } from "./utils";
+import { getColor, convertEventToHighlight, handlingButton, convertDateToString, shallowEqual, makeEffectToObject } from "./utils";
 import { ContextMenu } from "@kobalte/core";
 import { AlertDialogForEvent, CreateEventDialog } from "./dialogs";
 import { BaseDirectory, create, exists, readTextFile, writeTextFile } from "@tauri-apps/plugin-fs";
@@ -125,34 +125,15 @@ function daySingle(
       </For>
       <Transition name="trans" onAfterExit={async ()=>{
         if (title() === '') {return;}
-        const s = new Date(`${start()["date"]}T${start()["time"]}`);
-        const e = new Date(`${end()["date"]}T${end()["time"]}`);
-        if (s >= e) {await message("시작 날짜가 끝나는 날짜보다 늦습니다."); return;}
+        const res = makeEffectToObject(start(), end(), title(), content(), color());
+        if (res === false) {await message("시작 날짜가 끝나는 날짜보다 늦습니다."); return;}
         const tmp = [...orge()];
         console.log(start(), end());
-        tmp.push({
-          "start": {
-            "year": s.getFullYear(),
-            "month": s.getMonth()+1,
-            "day": s.getDate(),
-            "hour": s.getHours(),
-            "minute": s.getMinutes()
-          },
-          "title": title(),
-          "content": content(),
-          "end": {
-            "year": e.getFullYear(),
-            "month": e.getMonth()+1,
-            "day": e.getDate(),
-            "hour": e.getHours(),
-            "minute": e.getMinutes()
-          },
-          "color": color()
-        })
+        tmp.push(res);
         setorge(tmp);
         console.log(orge());
       }}>
-        <Show when={modal()}>{CreateEventDialog(modal, setModalVisible, title, setTitle, start, setStart, end, setEnd, content, setContent, color, setColor)}</Show>
+        <Show when={modal()}>{CreateEventDialog(modal, setModalVisible, {title, setTitle, start, setStart, end, setEnd, content, setContent, color, setColor})}</Show>
       </Transition>
     </div>
   );
@@ -229,8 +210,9 @@ function App() {
     }
     loaded = true;
   })
-  createEffect(async (ev: any) => {
-    if (shallowEqual(ev, events())) {return;}
+  createEffect(async (ev: Promise<void> | undefined) => {
+    // simple hack that works, but typescript and me doesnt know it
+    if (shallowEqual(ev as unknown as Event[], events())) {return;}
     if (!loaded) {return;}
     await writeTextFile("data.json", JSON.stringify(events()), { baseDir: BaseDirectory.AppData });
   })
