@@ -52,7 +52,7 @@
       "targets": "all",
       "updater": {
         "active": true,
-        "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEREQTA4N0YzQ0MxNDk5OTAKUldTUW1SVE04NGVnM2RQd2VzcGRmYVRKOUhkalpVZUlJaEtINnl5aWZPL1ZTMmdZOTJUWXo4a3kK"
+        "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDE4RTQ3RTdBRkJFNjQzOApSV1E0Wkw2djUwZU9BV09TNTBicFJOSE9ET3lGck42ZEZkZDZhSHVjWFVnUkg4eXBCeWZCcHpzVgo="
       },
       "windows": {
         "certificateThumbprint": null,
