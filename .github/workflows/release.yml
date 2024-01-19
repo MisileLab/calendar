@@ -27,7 +27,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: setup pnpm
-        uses: pnpm/actions-setup@v2
+        uses: pnpm/action-setup@v2
         with:
           version: '*'
 
