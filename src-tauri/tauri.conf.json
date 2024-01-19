@@ -18,7 +18,8 @@
       ]
     },
     "updater": {
-      "endpoints": []
+      "endpoints": ["https://raw.githubusercontent.com/MisileLab/calendar/main/updater.json"],
+      "dialog": true
     }
   },
   "tauri": {
@@ -50,7 +51,8 @@
       "shortDescription": "",
       "targets": "all",
       "updater": {
-        "active": false
+        "active": true,
+        "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEREQTA4N0YzQ0MxNDk5OTAKUldTUW1SVE04NGVnM2RQd2VzcGRmYVRKOUhkalpVZUlJaEtINnl5aWZPL1ZTMmdZOTJUWXo4a3kK"
       },
       "windows": {
         "certificateThumbprint": null,
