@@ -1,0 +1,15 @@
+{
+  "version": "0.0.2",
+  "notes": "See the assets to download this version and install.",
+  "pub_date": "2024-01-19T15:15:59.314Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNFpMNnY1MGVPQVZrS1dwR1JUQVdNaGxsNmxuL3lQUW0zNXBHK3ZPRkR2TVhIbFpScU1GL3QxSS9VOVpJSk5KeFZjNHZrZUh6QUsxWTJlZUpOOXRQNU1QRFpVQlcvUEFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzA1Njc3MzI5CWZpbGU6Y2FsZW5kYXJfMC4wLjJfeDY0X2VuLVVTLm1zaS56aXAKb01GbmU5SDhVM3lDUlZ5aTBJT2U3bVliZFRWc1AzUEN0dHRxckRnUElKelExMHduTHJLa2ljQzR6aHcwdWRubDBzYkFmS0JrZXQrWFYrZGxSTzZzRHc9PQo=",
+      "url": "https://github.com/MisileLab/calendar/releases/download/app-0.0.2/calendar_0.0.2_x64_en-US.msi.zip"
+    },
+    "linux-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNFpMNnY1MGVPQVhrelYvbUVUVXBTdmZObUtYY3hlTjVEaHFxNUxWb21JVW04UzRuZmFaZEY0VGU2N1c2T0QxTURwckw4NDdVQzgwY1d5MVEyZkgrQ3pxRTNsV3p4NndzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzA1Njc3MzQ5CWZpbGU6Y2FsZW5kYXJfMC4wLjJfYW1kNjQuQXBwSW1hZ2UudGFyLmd6CkRIZkRpcHZveEExWC9WRkM5VW85U2xjclJKTkxVWDNNNkJsN3ZRd0dSSG5JU0xYNElTUytCRDBzN0Y4dlBRb0V6UGF2ajE2NkdXQVcrRTJ2UnBDNENBPT0K",
+      "url": "https://github.com/MisileLab/calendar/releases/download/app-0.0.2/calendar_0.0.2_amd64.AppImage.tar.gz"
+    }
+  }
+}
