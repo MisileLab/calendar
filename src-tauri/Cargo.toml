@@ -3,7 +3,7 @@ name = "calendar"
 version = "0.0.0"
 description = "The simple calendar that integrates with Action"
 authors = ["MisileLaboratory"]
-license = ""
+license = "AGPL-3.0"
 repository = ""
 edition = "2021"
 

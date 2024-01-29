@@ -28,12 +28,11 @@ function ContextMenuForEvent(item: SimpleEvent, comp: JSX.Element, events: Acces
             <div class="flex flex-row-reverse w-full mb-1">
               <button
                 onClick={async () => {
-                  const a = await confirm("정말로 삭제하시겠습니까?");
-                  console.log(`a: ${JSON.stringify(a)}`);
-                  if (a) {
+                  if (await confirm("정말로 삭제하시겠습니까?")) {
                     const tmp = events().slice();
-                    if (tmp.indexOf(item.org) == -1) {return;}
-                    tmp.splice(tmp.indexOf(item.org), 1);
+                    const tmpi = tmp.indexOf(item.org);
+                    if (tmpi == -1) {return;}
+                    tmp.splice(tmpi, 1);
                     setEvents(tmp);
                   }
                 }}
@@ -88,9 +87,10 @@ function daySingle(
   index: string
 ) {
   const td = new Date();
+  const tdjson = {"date": td.toISOString().substring(0, 10), "time": td.toISOString().substring(11, 16)}
   const [title, setTitle] = createSignal("");
-  const [start, setStart] = createSignal({"date": `${td.toISOString().substring(0, 10)}`, "time": `${td.toISOString().substring(11, 16)}`});
-  const [end, setEnd] = createSignal({"date": `${td.toISOString().substring(0, 10)}`, "time": `${td.toISOString().substring(11, 16)}`});
+  const [start, setStart] = createSignal(tdjson);
+  const [end, setEnd] = createSignal(tdjson);
   const [content, setContent] = createSignal("");
   const [modal, setModalVisible] = createSignal(false);
   const [color, setColor] = createSignal("c0ffee");
@@ -127,11 +127,7 @@ function daySingle(
         if (title() === '') {return;}
         const res = makeEffectToObject(start(), end(), title(), content(), color());
         if (res === false) {await message("시작 날짜가 끝나는 날짜보다 늦습니다."); return;}
-        const tmp = [...orge()];
-        console.log(start(), end());
-        tmp.push(res);
-        setorge(tmp);
-        console.log(orge());
+        setorge([...orge(), res]);
       }}>
         <Show when={modal()}>{CreateEventDialog(modal, setModalVisible, {title, setTitle, start, setStart, end, setEnd, content, setContent, color, setColor})}</Show>
       </Transition>
@@ -141,7 +137,6 @@ function daySingle(
 
 function day(date: Date, events: Accessor<Event[]>, setEvents: Setter<Event[]>) {
   const highlights = createMemo(() => {
-    console.log(events());
     return convertEventToHighlight(events());
   }, [], {
     equals: (prev, next) => shallowEqual(prev, next)
@@ -212,8 +207,7 @@ function App() {
   })
   createEffect(async (ev: Promise<void> | undefined) => {
     // simple hack that works, but typescript and me doesnt know it
-    if (shallowEqual(ev as unknown as Event[], events())) {return;}
-    if (!loaded) {return;}
+    if (shallowEqual(ev as unknown as Event[], events()) || !loaded) {return;}
     await writeTextFile("data.json", JSON.stringify(events()), { baseDir: BaseDirectory.AppData });
   })
 
