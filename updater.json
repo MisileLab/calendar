@@ -1,15 +1,15 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
   "notes": "See the assets to download this version and install.",
-  "pub_date": "2024-01-19T19:34:12.635Z",
+  "pub_date": "2024-01-29T00:57:12.520Z",
   "platforms": {
     "linux-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNFpMNnY1MGVPQVJVV0sxR3hQM0dpWmxsdm5DcFVlRWJQY0c3UWQxQjdHVFNtVmp2T0I3SGo4dis0Q2ZtT3VjZERBVjZjczBYUDM4TVdvd2dtSks4dWhDSWkwbWw1ZEFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzA1NjkyNzI0CWZpbGU6Y2FsZW5kYXJfMC4wLjJfYW1kNjQuQXBwSW1hZ2UudGFyLmd6CnNVWENIWGhLWWJiK0RLeUZvWVFLU1UwOUdJOGdpVlFwNmhsSi9lclZzVEVXKzRwWXlMZkpLQmNvQ3cvRGhpMi9Qc0JGN0c5YlVENGJLYzNBUitKWUFnPT0K",
-      "url": "https://github.com/MisileLab/calendar/releases/download/v0.0.2/calendar_0.0.2_amd64.AppImage.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNFpMNnY1MGVPQVNKTDA5R1pxd3poa2UwVEdKZlEzWi9Wa3M4empGUDN2eEVyMWF4ck9ITHMvcE9tcUowVnZQQmlGTkRteDF6Q2x4MGJqMDZtTXhHL2FZYkRKUmlTUEFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzA2NDg5Nzg2CWZpbGU6Y2FsZW5kYXJfMC4wLjNfYW1kNjQuQXBwSW1hZ2UudGFyLmd6CnEwZGZ2T0tDTWxHSHcrRFRvRVpuODh1c25RTnhDS09HWVphbWR0eU14bEl1WitjUlF4cnFsTEw5a0thaUd5WDEvcWdGSHl5VllUcE5LU2p1b3hnL0J3PT0K",
+      "url": "https://github.com/MisileLab/calendar/releases/download/v0.0.3/calendar_0.0.3_amd64.AppImage.tar.gz"
     },
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNFpMNnY1MGVPQVZLaEVab0hEaVhyRHZjSVZYajFpcTB1d1AxZzJMYUY5bXFhQzJQTExBeUJjS1gzd3NzU2x3Zm1vRUdqNU92R3cvZWhGaGpYRGIzSEVtRmZTUWVzZndNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzA1NjkyODQ3CWZpbGU6Y2FsZW5kYXJfMC4wLjJfeDY0X2VuLVVTLm1zaS56aXAKeGNJcFZ0N0lua0dOVzgzSkgvNEFDcXpPZURBYkxiM3lLKzVJY1REWENpNk1GZUxZOWdabTN4TlBVWTQvTUpVU2J2U0czY2ZlTTJBeVg2R0tqdldPRFE9PQo=",
-      "url": "https://github.com/MisileLab/calendar/releases/download/v0.0.2/calendar_0.0.2_x64_en-US.msi.zip"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNFpMNnY1MGVPQWVCSGN4K0lsbnpWTENqelZDYU8yem0va0xKSXJzK3FPbGkzblJZMlFIVUl3cXNEeWxTV09ZbnlSVDVBV0pTL2pFRFNXeERvRmRmM0hSU3Q4TVZ4THc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzA2NDg5ODI4CWZpbGU6Y2FsZW5kYXJfMC4wLjNfeDY0X2VuLVVTLm1zaS56aXAKL2JiRDAxTXpoS3UyRXJiR2VQK203TldENzdKS3NJR29PeVl2dkh6cCtmQ1l4d3ZHUWlGUmZRVnN3bERHZlNGVGpKMm90Um1zaVYwZ2FhWXhGSEZjQ1E9PQo=",
+      "url": "https://github.com/MisileLab/calendar/releases/download/v0.0.3/calendar_0.0.3_x64_en-US.msi.zip"
     }
   }
 }
