@@ -15,8 +15,8 @@ dependencies:
     specifier: 2.0.0-beta.0
     version: 2.0.0-beta.0
   '@tauri-apps/plugin-fs':
-    specifier: 2.0.0-alpha.6
-    version: 2.0.0-alpha.6
+    specifier: 2.0.0-beta.0
+    version: 2.0.0-beta.0
   solid-icons:
     specifier: 1.1.0
     version: 1.1.0(solid-js@1.8.12)
@@ -838,11 +838,6 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@tauri-apps/api@2.0.0-alpha.13:
-    resolution: {integrity: sha512-sGgCkFahF3OZAHoGN5Ozt9WK7wJlbVZSgWpPQKNag4nSOX1+Py6VDRTEWriiJHDiV+gg31CWHnNXRy6TFoZmdA==}
-    engines: {node: '>= 18', npm: '>= 6.6.0', yarn: '>= 1.19.1'}
-    dev: false
-
   /@tauri-apps/api@2.0.0-beta.0:
     resolution: {integrity: sha512-WLoh/Vk8cgY7XrJV7Vpb6PssReBZWQCATfYBb1aCRDk+sp0NyPwumx6fZ2ECAKzAcs3OeanluwZcajruIW4CPQ==}
     engines: {node: '>= 18', npm: '>= 6.6.0', yarn: '>= 1.19.1'}
@@ -961,10 +956,10 @@ packages:
       '@tauri-apps/api': 2.0.0-beta.0
     dev: false
 
-  /@tauri-apps/plugin-fs@2.0.0-alpha.6:
-    resolution: {integrity: sha512-f/LFVu33AF+GNQxEo/4/Xj1BZ0Tpr+TFViGs7ZqXdY1E+7W9mcHTL58sK0AHYXSJHfUezFKodazxwbXg4lYCig==}
+  /@tauri-apps/plugin-fs@2.0.0-beta.0:
+    resolution: {integrity: sha512-oFAA8T5wyg5dmsF/WmjjtUMEnJtzu+p2ElsK2FdwLVSB2AdAdud5izZhd1o63HFjR6waiIYebSI+llzJG7b5MQ==}
     dependencies:
-      '@tauri-apps/api': 2.0.0-alpha.13
+      '@tauri-apps/api': 2.0.0-beta.0
     dev: false
 
   /@types/babel__core@7.20.5:
